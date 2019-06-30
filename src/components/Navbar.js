@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from "styled-components"
 
 const Navigation = styled.nav`
-@media (min-height: 520px) and (min-width: 800px) {
+@media (min-height: 550px) and (min-width: 800px) {
   position: sticky;
 top:0;
 background:white;
@@ -11,7 +11,7 @@ z-index:1000;
 border-right:1px solid;
 height:100vh;
 }
-@media screen and (max-width: 800px) {
+@media (max-height: 550px)  and (max-width: 800px) {
   display:grid;
   grid-template-columns:1fr 2fr;
   grid-gap:2em;
