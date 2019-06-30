@@ -39,7 +39,7 @@ const Peter = styled.div`
         max-height:150px;
 
         @media screen and (max-width: 800px) {
-      max-width:100%;
+      max-width:300px;
       max-height:100%;
     }    
 
