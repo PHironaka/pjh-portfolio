@@ -19,6 +19,14 @@ height:100vh;
 
 }
 
+@media (max-width: 650px) {
+  display:grid;
+  grid-template-columns:1fr;
+  grid-gap:2em;
+  padding:0 2em;
+
+}
+
 small {
   display: block;
   font-size:.7em;
