@@ -3,7 +3,7 @@ import Link from 'gatsby-link'
 import styled from "styled-components"
 
 const Navigation = styled.nav`
-@media (min-height: 640px) and (min-width: 800px) {
+@media (min-height: 520px) and (min-width: 800px) {
   position: sticky;
 top:0;
 background:white;
