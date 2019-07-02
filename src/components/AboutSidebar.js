@@ -96,7 +96,7 @@ const FunFacts = styled.div`
         }
       }
     }
-    }
+  }
       
 `
 const AboutSidebar = () => (
@@ -111,12 +111,11 @@ const AboutSidebar = () => (
           <p> Feel free to drop my a line <a href="mailto:peter@peterhironaka.com">here</a>. My inbox is always open :) </p>
         </div>
         <div>
-        <span>1</span>
-          <p>906 combines the pleasure of low dose cannabis with the functional benefits of plant medicine. </p>
+        <p>This site was built with <a href="https://www.gatsbyjs.org">Gatsby.js</a> and is deployed via <a href="https://netlify.com">Netlify</a>.</p>
         </div>
 
         <div>
-          <p>This site was built with <a href="https://www.gatsbyjs.org">Gatsby.js</a> and is deployed via <a href="https://netlify.com">Netlify</a>.</p>
+          <p>© {new Date().getFullYear()} Peter Hironaka</p>
         </div>
 
         
