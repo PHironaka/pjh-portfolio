@@ -73,7 +73,6 @@ body {
     font-kerning: normal;
     line-height: 1.5;
     font-size: 16px;
-    overflow-x:hidden;
 }
 
 h2 {

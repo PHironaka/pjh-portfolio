@@ -16,7 +16,7 @@ height:100vh;
   grid-template-columns:1fr 2fr;
   grid-gap:2em;
   padding:0 2em;
-
+  justify-self: left;
 }
 
 @media (max-width: 650px) {
@@ -33,7 +33,7 @@ small {
   margin-bottom:2em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 700px) {
   border-right:none;
   border-bottom:none;
   height:auto;

@@ -25,7 +25,7 @@ const AboutSection = styled.div`
   }
 
   h2 {
-    margin:2em 0;
+    margin:0 0 2em 0;
   }
 
 
