@@ -78,6 +78,8 @@ const NavLinks = styled.div`
     @media screen and (max-width: 800px) {
   top:auto;
   transform: rotate(0);
+  justify-self:start;
+
   }
   
     a {

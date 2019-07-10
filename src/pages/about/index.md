@@ -9,6 +9,7 @@ I've had the opportunity to work with some amazing clients. Some notable names b
 
 * [Nourish Snacks](https://nourishsnacks.com)
 * [Chinatown Market](https://thechinatownmarket.com)
+* [Veralet Watches](https://veralet.com)
 * [Brandblack](https://brandblack.com)
 * [Camp High](https://camphigh.com)
 

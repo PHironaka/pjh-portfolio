@@ -50,7 +50,7 @@ const ProjectPageContainer = styled.section`
   z-index:1;
 
   @media screen and (max-width: 800px) {
-    top:70px;
+    top:135px;
   }
 }
 

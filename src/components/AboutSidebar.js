@@ -14,8 +14,8 @@ padding: 0 ;
 
 
 @media screen and (max-width: 800px) {
-  border-right:none;
-position: relative;
+  border-left:none;
+  position: relative;
   border-bottom:none;
   height:auto;
   z-index:1000;
@@ -32,14 +32,15 @@ const Peter = styled.div`
     margin: 0 auto;
     @media screen and (max-width: 800px) {
       max-width:100%;
-      top:0px;
+      top:0;
+    margin: 0 ;
     }    
     img {
         max-width:150px;
         max-height:150px;
 
         @media screen and (max-width: 800px) {
-      max-width:300px;
+      max-width:100%;
       max-height:100%;
     }    
 
