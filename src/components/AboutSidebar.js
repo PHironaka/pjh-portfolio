@@ -109,7 +109,7 @@ const AboutSidebar = () => (
       <FunFacts>
         <div>
         <span>Got work?</span>
-          <p> Feel free to drop my a line <a href="mailto:peter@peterhironaka.com">here</a>. My inbox is always open :) </p>
+          <p> Feel free to drop me a line <a href="mailto:peter@peterhironaka.com">here</a>. My inbox is always open :) </p>
         </div>
         <div>
         <p>This site was built with <a href="https://www.gatsbyjs.org">Gatsby.js</a> and is deployed via <a href="https://netlify.com">Netlify</a>.</p>
