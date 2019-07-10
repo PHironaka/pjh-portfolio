@@ -9,6 +9,8 @@ repo: 'https://github.com/PHironaka/collect-interior'
 project: 'https://tamarisc.vc'
 image: /img/elle0210.jpg
 tags:
-  - shopify
+  - gatsby
+  - PWA
+  - styled-components
 ---
 Redesign project for Tamarisc, a Venture Capital firm founded in 2013.
