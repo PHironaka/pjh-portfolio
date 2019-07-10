@@ -93,7 +93,7 @@ class TagRoute extends React.Component {
     const tag = this.props.pathContext.tag
     const title = this.props.data.site.siteMetadata.title
     const totalCount = this.props.data.allMarkdownRemark.totalCount
-    const tagHeader = `${totalCount} post${
+    const tagHeader = `${totalCount} projects${
       totalCount === 1 ? '' : 's'
     } tagged with “${tag}”`
 
