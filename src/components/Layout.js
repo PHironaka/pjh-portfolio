@@ -115,6 +115,10 @@ a {
   }
 }
 
+code {
+  background:#eee;
+  font-family:monospace;
+}
 
 .project-content {
   
