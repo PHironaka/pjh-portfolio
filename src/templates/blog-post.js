@@ -8,9 +8,6 @@ import Layout from '../components/Layout'
 import styled from "styled-components"
 
 const BlogContent = styled.div` 
-  display: grid;
-  grid-template-columns:  1fr;
-  grid-column-gap: 2em;
   margin: 0 0 3em;
   padding: 0 2em;
 
