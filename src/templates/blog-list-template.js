@@ -57,7 +57,10 @@ export default class BlogList extends React.Component {
                 style={{
                   textDecoration: 'none',
                   color: i + 1 === currentPage ? '#ffffff' : '',
-                  background: i + 1 === currentPage ? '#007acc' : '',
+                  padding: '15px 20px',
+                  margin: '20px 0 ',
+                  display:'block',
+                  background: i + 1 === currentPage ? '#000' : '',
                 }}
               >
                 {i + 1}
