@@ -6,7 +6,7 @@ description: >-
   1906 is a (new) high. 1906 combines the pleasure of low dose cannabis with the
   functional benefits of plant medicine.
 repo: none
-project: 'https://anr.netlify.com/'
+project: 'https://anr-435b58.netlify.com/'
 image: /img/1906_midnight_box_hand_4777_2000x1335.jpg
 tags:
   - gatsby
