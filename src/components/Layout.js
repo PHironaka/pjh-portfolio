@@ -28,7 +28,7 @@ const PageContainer = styled.div`
   grid-template-columns:180px 2fr auto;
 
 @media screen and (max-width: 800px) {
-  grid-template-columns:1fr;
+  display:block;
 }
 `
 
