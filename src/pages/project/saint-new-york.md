@@ -1,7 +1,7 @@
 ---
 templateKey: project-post
 title: Saint New York
-date: 2018-02-22T21:48:36.000Z
+date: 2018-09-22T21:48:36.000Z
 description: >-
   I built a Progressive Web App w/Shopify integration for Saint New York, a new deodorant stick company. 
 repo: 'none'
