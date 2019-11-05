@@ -25,8 +25,32 @@ const AboutSection = styled.div`
   }
 
 
+  
+
   a {
+    margin: 10px 0;
+    position: relative;
+    transition: .2s;
     line-height:2.3;
+    z-index: 1000;
+    &:after {
+      position: absolute;
+      transition: .2s;
+      content: '';
+      width: 0;
+      bottom: 0;
+      top: 10px;
+      height: 6px;
+      background: #f5d6db;
+      z-index: -1;
+      left: 0;
+
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+      }
+    }
   }
 `
 

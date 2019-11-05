@@ -11,6 +11,6 @@ image: /img/elle0210.jpg
 tags:
   - gatsby
   - PWA
-  - styled-components
+  - styled components
 ---
 Redesign project for Tamarisc, a Venture Capital firm founded in 2013.

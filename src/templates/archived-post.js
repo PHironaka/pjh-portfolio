@@ -12,7 +12,6 @@ const BlogContent = styled.div`
   grid-template-columns:  1fr;
   grid-column-gap: 2em;
   margin: 0 0 3em;
-  padding: 0 2em;
 
   ul {
     margin: 1em 0;

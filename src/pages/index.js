@@ -1,17 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'gatsby-link'
-import externalLink from '../img/external-link.svg'
 import Layout from '../components/Layout'
 import ExternalLink from '../components/ExternalLink'
 import styled from "styled-components"
-import Img from 'gatsby-image'
 import Helmet from 'react-helmet'
 import { kebabCase } from 'lodash'
 
 const ProjectPageContainer = styled.section`
 
   display: grid;
+
+  h2 {
+    font-size:2em;
+    font-weight: 300;
+    margin: 2em 0px;
+    max-width:850px;
+  }
 
   a {
       margin: 10px 0;
@@ -94,7 +99,7 @@ const TagList = styled.ul`
     background: white;
 z-index: 1000;
     li {
-      margin: 2em 1em 2em 0;
+      margin: 1em 1em 1em 0;
 
 
       a {
@@ -126,7 +131,7 @@ z-index: 1000;
 `
 
 const ProjectTitle = styled.div`
-  h2 {
+  h3 {
     margin:10px 0;
 
     a {
@@ -188,6 +193,9 @@ export default class IndexPage extends React.Component {
             <title>{`Projects`}</title>
           </Helmet>
       <ProjectPageContainer>
+
+        <h2>Hello, my name is Peter Hironaka, I am a Freelance Front End Developer based in Los Angeles, CA. Here are a few things I've been working on:</h2>
+
        
         <Projects>
           {posts
@@ -195,12 +203,12 @@ export default class IndexPage extends React.Component {
             .map(({ node: post }) => (
               <ProjectPost>
                 <ProjectTitle>
-                <h2>
+                <h3>
                   <a className="post-content--external-link" href={post.frontmatter.project} target="_blank" rel="noopener noreferrer">
                     {post.frontmatter.title}
                     <ExternalLink />
                   </a>
-                </h2>
+                </h3>
                 </ProjectTitle>   
                 <div dangerouslySetInnerHTML={{
                 __html: post.html,
