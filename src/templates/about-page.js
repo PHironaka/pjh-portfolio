@@ -5,15 +5,11 @@ import Layout from '../components/Layout'
 import styled from "styled-components"
 import Helmet from 'react-helmet'
 
-const Image = styled.img`
-    max-width: 100%;
-    border-radius:0;
-`
+
 
 const AboutSection = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  padding: 0 2em;
   margin-bottom:4em;
 
   ul {

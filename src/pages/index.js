@@ -74,22 +74,14 @@ const ProjectPageContainer = styled.section`
 `
 
 const Projects = styled.div`
-  margin-top: 5em;
   border-top: 1px solid;
 
 `
 
 
 const ProjectPost = styled.div`
-  display: grid;
-  grid-template-columns: repeat(1,auto);
-  grid-column-gap: 2em;
-  padding: 1em 2em;
+  padding: 1em 0;
   border-bottom:1px solid;
-
-  @media screen and (max-width: 800px) {
-  grid-template-columns: 1fr ;
-  }
 
   &:last-child {
     border-bottom: none;
@@ -109,6 +101,7 @@ z-index: 1000;
       margin: 10px 0;
       position: relative;
       transition: .2s;
+      z-index:0;
       &:after {
         position: absolute;
         transition: .2s;
@@ -195,9 +188,7 @@ export default class IndexPage extends React.Component {
             <title>{`Projects`}</title>
           </Helmet>
       <ProjectPageContainer>
-        <div className="ui-marquee">
-          <span>Recent Work Below </span>
-        </div>
+       
         <Projects>
           {posts
             .filter(post => post.node.frontmatter.templateKey === 'project-post')

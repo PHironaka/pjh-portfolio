@@ -10,6 +10,7 @@
   "dependencies": {
     "@weknow/gatsby-remark-twitter": "^0.2.1",
     "babel-plugin-styled-components": "^1.10.2",
+    "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
     "gatsby": "^2.10.4",
     "gatsby-image": "^2.2.3",
     "gatsby-plugin-feed": "^2.3.1",

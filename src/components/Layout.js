@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider, createGlobalStyle } from "styled-components"
-import Navbar from './Navbar'
-import AboutSidebar from './AboutSidebar'
+import Header from './Header'
+import Footer from './Footer'
 import { StaticQuery, graphql } from "gatsby"
 import pistol from '../img/space-pic.jpg'
 import styled from 'styled-components'
@@ -24,12 +24,8 @@ const StyledPage = styled.div`
 `
 const PageContainer = styled.div`
   margin:0 auto;
-  display:grid;
-  grid-template-columns:180px 2fr auto;
-
-@media screen and (max-width: 800px) {
-  display:block;
-}
+  max-width:1000px;
+  padding: 0 2em;
 `
 
 
@@ -73,6 +69,19 @@ body {
     font-kerning: normal;
     line-height: 1.5;
     font-size: 16px;
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-family: aktiv-grotesk-extended, sans-serif;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-family: aktiv-grotesk-extended, sans-serif;
+}
+:-ms-input-placeholder { /* IE 10+ */
+    font-family: aktiv-grotesk-extended, sans-serif;
+}
+:-moz-placeholder { /* Firefox 18- */
+  font-family: aktiv-grotesk-extended, sans-serif;
 }
 
 h2 {
@@ -264,6 +273,160 @@ margin:0;
 }
    
 }
+
+.navMenu {
+  transition: height 350ms ease-in-out, opacity 750ms ease-in-out;
+  transition: all 0.5s ease;
+  transition-duration: 1s;
+}
+.navbar-brand {
+  padding:0 1em;
+}
+.navbar-menu {
+  display:none;
+  @media screen and (min-width: 800px) {
+    display: grid;
+    
+  }
+}
+.navbar-start {
+  display:grid;
+@media screen and (max-width: 800px) {
+    display:block;
+    position: absolute;
+    background: white;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    z-index: 100000;
+    overflow:hidden;
+    }
+  ul {
+    padding: 0;
+    padding-bottom: 0px;
+    list-style: none;
+    
+    @media screen and (max-width: 800px) {
+      display: block;
+      padding: 0;
+      width:100%;
+      position: relative;
+      top: 56px;
+      font-size:1.5em;
+      margin:2em ;
+    }
+    li {
+      @media screen and (max-width: 800px) {
+      margin:1em 0;
+    }
+    }
+    a {
+      text-decoration:none;
+    }
+   
+  }
+ 
+  
+  .navbar-item {
+    transition: all 0.3s ease 0s;
+    position: relative;
+    &:after {
+      position: absolute;
+      transition: .3s;
+      content: '';
+      width: 0;
+      left: 50%;
+      bottom: 0;
+      top: 39px;
+      height: 2px;
+      background: #000;
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+      left: 0;
+      }
+  }
+    @media screen and (max-width: 800px) {
+      display:block;
+      text-align: center;
+      margin: 1em 0;
+      text-transform: uppercase;
+    }
+    
+  }
+}
+.navbar-menu{
+	transition: height 1s ease-in-out, opacity 1s ease-in-out;
+}
+.navbar-menu.is-active {
+  display: block;
+	height: auto;
+  opacity: 1;
+  z-index:10000;
+}
+.navbar-burger {
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+    padding-top: 26px;
+    color: #000;
+    cursor: pointer;
+    display: block;
+    height: 3.25rem;
+    position: absolute;
+    right: 42px;
+    top: 5px;
+    width: 2.25rem;
+    margin-left: auto;
+    transition-delay: 2s;
+    transition: height .35s ease-in-out,opacity .75s ease-in-out;
+    &.is-active {
+     transition-delay: 2s;
+    transition: height .35s ease-in-out,opacity .75s ease-in-out;
+    
+    .icon-1 {
+      opacity: 0;
+      transform: rotate(40deg);
+    }
+  
+    .icon-2 {
+      top: 26px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    }
+  
+    .icon-3 {
+      transform: rotate(-42deg);
+  }
+    }
+    span {
+      background-color: currentColor;
+      display: block;
+      height: 1.5px;
+      left: calc(50% - 8px);
+      position: absolute;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      transition-duration: .2s;
+      transition-property: background-color,opacity,-webkit-transform;
+      transition-property: background-color,opacity,transform;
+      transition-property: background-color,opacity,transform,-webkit-transform;
+      transition-timing-function: ease-out;
+      width:30px;
+      &.icon-1 {
+      transform: translateY(-8px);
+      animation-delay: 0.2s;
+    }
+      &.icon-3 {
+        transform: translateY(8px);
+        animation-delay: 250ms;
+      }
+   
+  }
+}
 `
 const Layout = ({ children }) => (
   <StaticQuery
@@ -279,38 +442,38 @@ const Layout = ({ children }) => (
     `}
     render={data => (
       <>
-      <ThemeProvider theme={theme}>
-      <StyledPage>
-      <Helmet>
-            <html lang="en" />
-            <title>{data.site.siteMetadata.title}</title>
-            <link rel="canonical" href="https://peterhironaka.com/" />
-        		<meta name="theme-color" content="#000000" />
-            <meta property="og:url" content="https://peterhironaka.com" />
-            <meta property="og:title" content="Peter Hironaka" />
-            <meta property="og:locale" content="en_US" />
-            <meta name="description" content="Peter Hironaka is a Freelance Web Developer based in Los Angeles." />
-        		<meta property="og:type" content="website" />
-            <meta property="og:image" content={pistol} />
-            <meta name="twitter:card" content="summary" />
-        		<meta name="twitter:site" content="@peterhironaka" />
-            <meta name="twitter:title" content="Peter Hironaka" />
-            <meta name="twitter:url" content="https://peterhironaka.com" />
-            <meta name="twitter:description" content="Peter Hironaka is a Freelance Web Developer based in Los Angeles." />
-            <meta name="twitter:image" content="https://peterhironaka.com/static/53ad586269110571a46ffbccce08171d/5d47c/pistol.jpg" />
-            <link rel="icon" type="image/png" sizes="32x32" href={pistol} />
-            <link rel="stylesheet" href="https://use.typekit.net/nsk3szt.css" />
-        </Helmet>
-          <GlobalStyle />
-          <PageContainer>
-          <Navbar />
-          <main>{children}</main>
-          <AboutSidebar />
-          </PageContainer>
-          
-      </StyledPage>
-      </ThemeProvider>
-        
+        <ThemeProvider theme={theme}>
+          <StyledPage>
+            <Helmet>
+              <html lang="en" />
+              <title>{data.site.siteMetadata.title}</title>
+              <link rel="canonical" href="https://peterhironaka.com/" />
+              <meta name="theme-color" content="#000000" />
+              <meta property="og:url" content="https://peterhironaka.com" />
+              <meta property="og:title" content="Peter Hironaka" />
+              <meta property="og:locale" content="en_US" />
+              <meta name="description" content="Peter Hironaka is a Freelance Web Developer based in Los Angeles." />
+              <meta property="og:type" content="website" />
+              <meta property="og:image" content={pistol} />
+              <meta name="twitter:card" content="summary" />
+              <meta name="twitter:site" content="@peterhironaka" />
+              <meta name="twitter:title" content="Peter Hironaka" />
+              <meta name="twitter:url" content="https://peterhironaka.com" />
+              <meta name="twitter:description" content="Peter Hironaka is a Freelance Web Developer based in Los Angeles." />
+              <meta name="twitter:image" content="https://peterhironaka.com/static/53ad586269110571a46ffbccce08171d/5d47c/pistol.jpg" />
+              <link rel="icon" type="image/png" sizes="32x32" href={pistol} />
+              <link rel="stylesheet" href="https://use.typekit.net/nsk3szt.css" />
+            </Helmet>
+            <GlobalStyle />
+            <PageContainer>
+              <Header />
+              <main>{children}</main>
+              <Footer />
+            </PageContainer>
+
+          </StyledPage>
+        </ThemeProvider>
+
       </>
     )}
   />

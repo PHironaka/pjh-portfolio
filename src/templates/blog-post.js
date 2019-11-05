@@ -9,7 +9,6 @@ import styled from "styled-components"
 
 const BlogContent = styled.div` 
   margin: 0 0 3em;
-  padding: 0 2em;
 
   ul {
     margin: 1em 0;

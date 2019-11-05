@@ -7,8 +7,38 @@ const BlogEntry = styled.div`
   display: grid;
   grid-template-columns: repeat(1,auto);
   grid-column-gap: 2em;
-  padding: 1em 2em;
+  padding: 1em 0;
   border-bottom: 1px solid;
+
+  h2 {
+    margin-bottom:1em;
+  }
+
+  a {
+    margin: 10px 0;
+    position: relative;
+    transition: .2s;
+    z-index: 0;
+    &:after {
+      position: absolute;
+      transition: .2s;
+      content: '';
+      width: 0;
+      bottom: 0;
+      top: 10px;
+      height: 6px;
+      background: #f5d6db;
+      z-index: -1;
+      left: 0;
+
+  }
+  &:hover {
+    &:after {
+      width: 100%;
+      }
+    }
+  }
+  
 `
 
 
@@ -32,12 +62,10 @@ export default class BlogList extends React.Component {
 
         <ul
           style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            justifyContent: 'space-between',
             alignItems: 'center',
             listStyle: 'none',
-            padding: '1em 2em',
+            padding: '1em 0',
+            textAlign: 'center',
           }}
         >
           {!isFirst && (
@@ -50,6 +78,7 @@ export default class BlogList extends React.Component {
               key={`pagination-number${i + 1}`}
               style={{
                 margin: 0,
+                display:'inline-block',
               }}
             >
               <Link
@@ -57,8 +86,9 @@ export default class BlogList extends React.Component {
                 style={{
                   textDecoration: 'none',
                   color: i + 1 === currentPage ? '#ffffff' : '',
-                  padding: '15px 20px',
+                  padding: '7px 14px',
                   margin: '20px 0 ',
+                  borderRadius:'50%',
                   display:'block',
                   background: i + 1 === currentPage ? '#000' : '',
                 }}

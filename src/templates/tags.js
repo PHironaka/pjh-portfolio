@@ -7,7 +7,7 @@ import styled from "styled-components"
 const TagSection = styled.div`
   display: grid;
   margin: 2em auto;
-  padding: 0 1em;
+  padding: 0 ;
   background: white;
   display:inline-flex;
   z-index: 1000;

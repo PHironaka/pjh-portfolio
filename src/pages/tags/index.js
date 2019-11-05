@@ -9,7 +9,7 @@ const TagList = styled.ul`
    list-style: none;
     margin-bottom: 0;
     display: block;
-    padding: 0 2em;
+    padding: 0 ;
 
     li {
       margin: 1em 1em 1em 0;

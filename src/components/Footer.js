@@ -10,7 +10,7 @@ const FooterItems = styled.div`
    display: grid;
    grid-template-columns: 1fr 2fr;
    border-top:1px solid;
-   padding:2em;
+   padding:2em 0;
     @media screen and (max-width: 800px) {
     grid-template-columns: 1fr ;
     grid-gap:1em;

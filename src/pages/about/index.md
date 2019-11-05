@@ -5,9 +5,13 @@ title: Established 1987.
 ---
 ## Established 1987.
 
-I've had the opportunity to work with some amazing clients. Some notable names below: 
+I've had the opportunity to work with some amazing clients in the past. Some notable names below: 
 
 * [Nourish Snacks](https://nourishsnacks.com)
+* [Pleasures](https://pleasuresnow.com)
+* [Tamarisc VC](https://tamarisc.vc)
+* [ANR Clinic](https://anr-435b58.netlify.com/)
+* [1906 New Highs](https://1906newhighs.com)
 * [Chinatown Market](https://thechinatownmarket.com)
 * [Veralet Watches](https://veralet.com)
 * [Brandblack](https://brandblack.com)
