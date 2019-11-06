@@ -24,7 +24,8 @@ const AboutSection = styled.div`
  }
 
 
-  p {
+
+  p, h3 {
     margin:1em 0;
   }
 
@@ -70,12 +71,12 @@ class AboutPageTemplate extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         {/* <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={title} name={title}/> */}
 
-        
+
 
         {/* <PageContent className="about-content" content={content} /> */}
         <AboutSection dangerouslySetInnerHTML={{ __html: post.html }} />
-       
-       
+
+
       </Layout>
     )
   }

@@ -3,7 +3,6 @@ templateKey: blog-post
 title: My take on Styled Components
 date: 2019-07-12T20:42:12.767Z
 description: With the advent of such JS frameworks as Vue and React, building Front End user interfaces is more fun than ever.
-
 ---
  It’s also more complicated than ever before. That said, all the latest js frameworks (especially Nuxt and Next) solve several critical issues:
 

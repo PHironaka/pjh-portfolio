@@ -19,6 +19,10 @@ max-width:900px;
    margin:0 3em;
 }
 
+li {
+  list-style:circle;
+
+ }
 
 
 
@@ -81,24 +85,30 @@ class BlogPostTemplate extends React.Component {
         </p>
         <MainSection dangerouslySetInnerHTML={{ __html: post.html }} />
        
+       
 
         <PaginationSection
         >
+            { previous.frontmatter.templateKey === 'blog-post' &&  (
+
           <li>
-            {previous && (
               <Link to={previous.fields.slug} rel="prev">
                 ← {previous.frontmatter.title}
               </Link>
-            )}
           </li>
+            )}
+
+{ next.frontmatter.templateKey === 'blog-post' &&  (
+
           <li>
-            {next && (
               <Link to={next.fields.slug} rel="next">
                 {next.frontmatter.title} →
               </Link>
-            )}
           </li>
+            )}
+
         </PaginationSection>
+          
       </Layout>
     )
   }
@@ -113,7 +123,8 @@ export const pageQuery = graphql`
         title
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    markdownRemark(
+      fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html

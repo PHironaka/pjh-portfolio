@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Peter Hironaka portfolio',
+    title: 'Peter Hironaka',
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     siteUrl: `https://peterhironaka.com`,
   },
