@@ -1,5 +1,5 @@
 ---
-templateKey: archived-post
+templateKey: about-page
 title: Archived Projects
 ---
 
