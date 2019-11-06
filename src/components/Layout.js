@@ -73,15 +73,23 @@ body {
 
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   font-family: aktiv-grotesk-extended, sans-serif;
+  font-size: 16px;
+
 }
 ::-moz-placeholder { /* Firefox 19+ */
   font-family: aktiv-grotesk-extended, sans-serif;
+  font-size: 16px;
+
 }
 :-ms-input-placeholder { /* IE 10+ */
     font-family: aktiv-grotesk-extended, sans-serif;
+    font-size: 16px;
+
 }
 :-moz-placeholder { /* Firefox 18- */
   font-family: aktiv-grotesk-extended, sans-serif;
+  font-size: 16px;
+
 }
 
 h2 {
@@ -405,7 +413,7 @@ margin:0;
     span {
       background-color: currentColor;
       display: block;
-      height: 1.5px;
+      height: 1px;
       left: calc(50% - 8px);
       position: absolute;
       -webkit-transform-origin: center;

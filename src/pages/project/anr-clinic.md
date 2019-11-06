@@ -7,7 +7,7 @@ description: >-
   functional benefits of plant medicine.
 repo: none
 project: 'https://anr-435b58.netlify.com/'
-image: /img/1906_midnight_box_hand_4777_2000x1335.jpg
+image: /img/anr.jpg
 tags:
   - gatsby
   - PWA

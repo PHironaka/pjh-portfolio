@@ -16,6 +16,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
               slug
             }
             frontmatter {
+              title
               tags
               templateKey
             }
@@ -31,20 +32,23 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
     const posts = result.data.allMarkdownRemark.edges
 
-    posts.forEach(edge => {
-      const id = edge.node.id
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
+
       createPage({
-        path: edge.node.fields.slug,
-        tags: edge.node.frontmatter.tags,
+        path: post.node.fields.slug,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          `src/templates/${String(post.node.frontmatter.templateKey)}.js`
         ),
-        // additional data can be passed via context
         context: {
-          id,
+          slug: post.node.fields.slug,
+          previous,
+          next,
         },
       })
     })
+
 
     const postsPerPage = 10
     const numPages = Math.ceil(posts.length / postsPerPage)

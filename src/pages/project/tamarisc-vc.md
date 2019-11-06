@@ -7,7 +7,7 @@ description: >-
   emerging artists. 
 repo: 'https://github.com/PHironaka/collect-interior'
 project: 'https://tamarisc.vc'
-image: /img/elle0210.jpg
+image: /img/tamarisc.jpg
 tags:
   - gatsby
   - PWA

@@ -1,154 +1,125 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import Link from 'gatsby-link'
-import Content, { HTMLContent } from '../components/Content'
+import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from "styled-components"
 
-const BlogContent = styled.div` 
-  margin: 0 0 3em;
-
-  ul {
-    margin: 1em 0;
-  }
-
-  p {
-    margin: 1em 0;
-  }
-  
-  li {
-    list-style-type: circle;
-    margin-left: 15px;
-  }
+const PostTitle = styled.h1`
+  font-size:1.5em;
+  font-weight:400;
+  margin:1em 0 0;
 `
 
-const BlogTitle = styled.div`
-  margin-bottom:1em;
+const MainSection = styled.div`
+max-width:900px;
+ p{
+  margin:1em 0;
+ }
+
+ ul {
+   margin:0 3em;
+}
+
+
+
+
 `
 
-const Taglist = styled.ul` 
-    margin-bottom: 0;
+const PaginationSection = styled.ul`
+   display:grid;
+   grid-template-columns:1fr 1fr;
+   list-style:none;
+   grid-gap:2em;
+   margin:3em 0;
 
-    li {
-    list-style: none;
+   li {
+     border:1px solid;
+     padding:2em;
+     text-align:center;
+   }
 
-      margin: 1em 1em 2em 0;
-      a {
-        border: 1px solid #000;
-        border-radius:10px;
-        padding: 8px 15px;
-        color:black;
-        transition: all .2s;
-        background:white;
-        &:hover {
-          color:white;
-          background:black;
-          }
+   a {
+    margin: 10px 0;
+    position: relative;
+    transition: .2s;
+    z-index: 0;
+    &:after {
+      position: absolute;
+      transition: .2s;
+      content: '';
+      width: 0;
+      bottom: 0;
+      top: 10px;
+      height: 6px;
+      background: #f5d6db;
+      z-index: -1;
+      left: 0;
+
+  }
+  &:hover {
+    &:after {
+      width: 100%;
       }
-
     }
+  }
+
+
 `
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  date,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
 
-  return (
-    <section className="section">
-      {helmet || ''}
-        <div className="columns">
+class BlogPostTemplate extends React.Component {
+  render() {
+    const post = this.props.data.markdownRemark
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const { previous, next } = this.props.pageContext
 
-          <BlogContent>
-             <BlogTitle >
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        <PostTitle>{post.frontmatter.title}</PostTitle>
+        <p
+        >
+          {post.frontmatter.date}
+        </p>
+        <MainSection dangerouslySetInnerHTML={{ __html: post.html }} />
+       
 
-            <h2 >
-              {title}
-            </h2>
-             <p>{date}</p>
-             </ BlogTitle >
-
-            <p>{description}</p>
-            <PostContent content={content} />
-
-
-                        <div className="blog-container--credits">
-
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <Taglist>
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </Taglist>
-              </div>
-            ) : null}
-            </div>
-
-        </BlogContent>
-
-        </div>
-    </section>
-  )
+        <PaginationSection
+        >
+          <li>
+            {previous && (
+              <Link to={previous.fields.slug} rel="prev">
+                ← {previous.frontmatter.title}
+              </Link>
+            )}
+          </li>
+          <li>
+            {next && (
+              <Link to={next.fields.slug} rel="next">
+                {next.frontmatter.title} →
+              </Link>
+            )}
+          </li>
+        </PaginationSection>
+      </Layout>
+    )
+  }
 }
 
-BlogPostTemplate.propTypes = {
-  content: PropTypes.string.isRequired,
-  contentComponent: PropTypes.func,
-  date: PropTypes.instanceOf(Date),
-  description: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.instanceOf(Helmet),
-}
-
-const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
-
-  return (
-    <Layout>
-
-    <BlogPostTemplate
-      content={post.html}
-      contentComponent={HTMLContent}
-      description={post.frontmatter.description}
-      date={post.frontmatter.date}
-      helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
-      tags={post.frontmatter.tags}
-      title={post.frontmatter.title}
-    />
-    </Layout>
-
-  )
-}
-
-BlogPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-}
-
-export default BlogPost
+export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
+      excerpt(pruneLength: 160)
       html
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
-        description
-        tags
+        date(formatString: "MMMM DD, YYYY")
       }
     }
   }

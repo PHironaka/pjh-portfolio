@@ -1,23 +1,22 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
-import ProjectLinks from '../components/ProjectLinks'
 import Layout from '../components/Layout'
 import styled from "styled-components"
 import Img from 'gatsby-image'
 
 const ProjectListing = styled.div`
-  display: grid;
-  grid-template-columns: 1fr ;
-  grid-column-gap: 2em;
-  padding: 0 2em;
 
   p {
     margin: 1em 0;
   }
+`
+const PostTitle = styled.h1`
+  font-size:1.5em;
+  font-weight:400;
+  margin:1em 0 0;
 `
 
 const HyperLink = styled.ul`
@@ -75,47 +74,30 @@ const TagList = styled.ul`
 
 `
 
-export const ProjectPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  image,
-  project,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
+class ProjectPostTemplate extends React.Component {
+  render() {
+    const post = this.props.data.markdownRemark
+    const siteTitle = this.props.data.site.siteMetadata.title
+    const { previous, next } = this.props.pageContext
 
-  return (
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        <PostTitle>{post.frontmatter.title}</PostTitle>
+        <p
+        >
+          {post.frontmatter.date}
+        </p>
+        {/* <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={title} name={title}/> */}
 
-    <section className="section">
-      {helmet || ''}
-          <div className="project-content ">
-           
-          <ProjectListing>
-            <div className="project-content--image">
-              <Img fluid={image.childImageSharp.fluid} alt={title} name={title}/>
-            </div>
-            <h2 className="title">
-              {title}
-            </h2>
-            
-            <HyperLink>
-             <li>
-            <a href={project} target="_blank" rel="noopener noreferrer"> Visit Site </a>
-            </li>
-            </HyperLink>
-            <div className="project-content--copy">
+        
 
-            <PostContent content={content} />
-          </div>
+        <ProjectListing dangerouslySetInnerHTML={{ __html: post.html }} />
+       
+      
 
-           
-
-        {tags && tags.length ? (
+        {post.frontmatter.tags && post.frontmatter.tags.length ? (
               <TagList>
-                  {tags.map(tag => (
+                  {post.frontmatter.tags.map(tag => (
                     <li key={tag + `tag`}>
                       <Link to={`/tags/${kebabCase(tag)}/`}> {tag}</Link>
                     </li>
@@ -123,64 +105,24 @@ export const ProjectPostTemplate = ({
                 </TagList>
 
             ) : null}
-
-        </ProjectListing>
-             <ProjectLinks
-          previous={PostContent.previous}
-          next={PostContent.next}
-        />
-
-
-
-          </div>
-       </section>
-
-  )
+       
+      </Layout>
+    )
+  }
 }
 
-ProjectPostTemplate.propTypes = {
-  content: PropTypes.string.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  image: PropTypes.string,
-  project: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.instanceOf(Helmet),
-}
-
-const ProjectPost = ({ data }) => {
-  const { markdownRemark: post } = data
-
-  return (
-    <Layout >
-
-    <ProjectPostTemplate
-      content={post.html}
-      contentComponent={HTMLContent}
-      description={post.frontmatter.description}
-      image= {post.frontmatter.image}
-      project={post.frontmatter.project}
-      helmet={<Helmet title={`${post.frontmatter.title} | Project`} />}
-      tags={post.frontmatter.tags}
-      title={post.frontmatter.title}
-    />
-    </Layout>
-
-  )
-}
-
-ProjectPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-}
-
-export default ProjectPost
+export default ProjectPostTemplate
 
 export const pageQuery = graphql`
-  query ProjectPostByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+  query ProjectPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
       id
+      excerpt(pruneLength: 160)
       html
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
@@ -199,3 +141,4 @@ export const pageQuery = graphql`
     }
   }
 `
+

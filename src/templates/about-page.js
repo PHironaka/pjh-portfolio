@@ -8,21 +8,27 @@ import Helmet from 'react-helmet'
 
 
 const AboutSection = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
   margin-bottom:4em;
 
-  ul {
-    margin:1em 0;
+  h2 {
+    margin:2em 0;
   }
+
+  ul {
+    margin:0 3em;
+ }
+
+ li {
+  list-style:circle;
+
+ }
+
 
   p {
     margin:1em 0;
   }
 
-  h2 {
-    margin:0 0 2em 0;
-  }
+ 
 
 
   
@@ -55,58 +61,38 @@ const AboutSection = styled.div`
 `
 
 
+class AboutPageTemplate extends React.Component {
+  render() {
+    const post = this.props.data.markdownRemark
+    const siteTitle = this.props.data.site.siteMetadata.title
 
-export const AboutPageTemplate = ({ title, image, content, contentComponent }) => {
-  const PageContent = contentComponent || Content
+    return (
+      <Layout location={this.props.location} title={siteTitle}>
+        {/* <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={title} name={title}/> */}
 
-  return (
-    <section className="section section--gradient">
-          <Helmet
-            titleTemplate="%s | Peter Hironaka"
-          >
-            <title>{`About`}</title>
-          </Helmet>
-             <AboutSection>
-              <PageContent className="about-content" content={content} />
-            </AboutSection>
+        
 
-    </section>
-  )
+        {/* <PageContent className="about-content" content={content} /> */}
+        <AboutSection dangerouslySetInnerHTML={{ __html: post.html }} />
+       
+       
+      </Layout>
+    )
+  }
 }
 
-AboutPageTemplate.propTypes = {
-  title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired,
-  content: PropTypes.string,
-  contentComponent: PropTypes.func,
-}
+export default AboutPageTemplate
 
-const AboutPage = ({ data }) => {
-  const { markdownRemark: post } = data
-
-  return (
-    <Layout >
-
-    <AboutPageTemplate
-      contentComponent={HTMLContent}
-      title={post.frontmatter.title}
-      image={post.frontmatter.image}
-      content={post.html}
-    />
-        </Layout>
-
-  )
-}
-
-AboutPage.propTypes = {
-  data: PropTypes.object.isRequired,
-}
-
-export default AboutPage
-
-export const aboutPageQuery = graphql`
-  query AboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+export const pageQuery = graphql`
+  query AboutPageBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
       html
       frontmatter {
         title
