@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import styled from "styled-components"
+import SEO from '../components/Seo'
 
 const PostTitle = styled.h1`
   font-size:1.5em;
@@ -78,6 +79,9 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <SEO
+        title={post.frontmatter.title}
+      />
         <PostTitle>{post.frontmatter.title}</PostTitle>
         <p
         >

@@ -2,6 +2,7 @@ import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/Layout"
 import styled from "styled-components"
+import SEO from '../components/Seo'
 
 const BlogEntry = styled.div`
   display: grid;
@@ -53,6 +54,9 @@ export default class BlogList extends React.Component {
 
     return (
       <Layout>
+        <SEO
+        title="Blog"
+      />
         {posts
         .filter(post => post.node.frontmatter.templateKey === 'blog-post')
         .map(({ node }) => {

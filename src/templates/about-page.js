@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Content, { HTMLContent } from '../components/Content'
 import Layout from '../components/Layout'
+import SEO from '../components/Seo'
 import styled from "styled-components"
 import Helmet from 'react-helmet'
 
@@ -69,6 +70,9 @@ class AboutPageTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
+        <SEO
+        title={post.frontmatter.title}
+      />
         {/* <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={title} name={title}/> */}
 
 
