@@ -91,7 +91,7 @@ export default class ProjectPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      < >
+      <>
           <Helmet
             titleTemplate="%s | Peter Hironaka"
           >

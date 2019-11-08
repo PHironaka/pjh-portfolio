@@ -81,7 +81,7 @@ class ProjectPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <PostTitle>{post.frontmatter.title}</PostTitle>
         <p
         >
@@ -106,7 +106,7 @@ class ProjectPostTemplate extends React.Component {
 
             ) : null}
        
-      </Layout>
+      </>
     )
   }
 }
