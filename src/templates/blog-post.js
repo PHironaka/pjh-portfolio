@@ -78,7 +78,7 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
+      <>
         <SEO
         title={post.frontmatter.title}
       />
@@ -113,7 +113,7 @@ class BlogPostTemplate extends React.Component {
 
         </PaginationSection>
           
-      </Layout>
+      </>
     )
   }
 }

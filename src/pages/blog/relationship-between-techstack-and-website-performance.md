@@ -1,11 +1,8 @@
 ---
 templateKey: blog-post
-title: The relationship between tech stack and performance
-date: 2018-10-08T23:36:47.016Z
-description: >-
-  An abbreviated rant (personal opinion) on the relationship between performance
-  and tech stack.
-
+title: The relationship between tech stack and website performance
+date: 2017-08-16T13:47:29-07:00
+description: An abbreviated rant (personal opinion) on the relationship between performance and tech stack.
 ---
 One of my favorite things about being a Front End Developer is getting to experiment with new frameworks and tools. In a sea of choices, one thing is clear: modular UI component based architecture is here and it's not going anywhere. 
 

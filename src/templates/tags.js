@@ -98,7 +98,7 @@ class TagRoute extends React.Component {
     } tagged with “${tag}”`
 
     return (
-    <Layout>
+    <>
 
       <TagSection>
         <Helmet title={`${tag} | ${title}`} />
@@ -110,7 +110,7 @@ class TagRoute extends React.Component {
                 <Link to="/tags/">Browse all tags</Link>
             </div>
       </TagSection>
-      </Layout>
+      </>
     )
   }
 }

@@ -186,7 +186,7 @@ export default class IndexPage extends React.Component {
     const { edges: posts } = data.allMarkdownRemark
 
     return (
-      <Layout>
+      <>
           <Helmet
             titleTemplate="%s | Peter Hironaka"
           >
@@ -234,7 +234,7 @@ export default class IndexPage extends React.Component {
             </Projects>
       </ProjectPageContainer>
 
-      </Layout>
+      </>
     )
   }
 }

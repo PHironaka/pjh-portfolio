@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { ThemeProvider, createGlobalStyle } from "styled-components"
+import { motion, AnimatePresence } from 'framer-motion'
 import Header from './Header'
 import Footer from './Footer'
 import { StaticQuery, graphql } from "gatsby"
@@ -436,7 +437,28 @@ margin:0;
   }
 }
 `
-const Layout = ({ children }) => (
+
+const duration = 0.1
+
+const variants = {
+  initial: {
+    opacity: 0,
+  },
+  enter: {
+    opacity: 1,
+    transition: {
+      duration: duration,
+      delay: duration,
+      when: 'beforeChildren',
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: { duration: duration },
+  },
+}
+
+const Layout = ({ children, location }) => (
   <StaticQuery
     query={graphql`
       query SiteTitleQuery {
@@ -475,8 +497,18 @@ const Layout = ({ children }) => (
             <GlobalStyle />
             <PageContainer>
               <Header />
-              <main>{children}</main>
-              <Footer />
+              <AnimatePresence>
+                <motion.main
+                  key={location.pathname}
+                  variants={variants}
+                  initial="initial"
+                  animate="enter"
+                  exit="exit"
+                >{children}
+                </motion.main>
+                <Footer />
+              </AnimatePresence>
+
             </PageContainer>
 
           </StyledPage>

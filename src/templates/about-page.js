@@ -69,8 +69,8 @@ class AboutPageTemplate extends React.Component {
     const siteTitle = this.props.data.site.siteMetadata.title
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
+<>        
+<SEO
         title={post.frontmatter.title}
       />
         {/* <Img fluid={post.frontmatter.image.childImageSharp.fluid} alt={title} name={title}/> */}
@@ -81,7 +81,7 @@ class AboutPageTemplate extends React.Component {
         <AboutSection dangerouslySetInnerHTML={{ __html: post.html }} />
 
 
-      </Layout>
+      </>
     )
   }
 }

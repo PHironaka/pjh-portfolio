@@ -16,7 +16,7 @@ text-align:right;
       width:100%;
       border:none;
        border:1px solid #c6c6c6;
-  border-radius:8px;
+        border-radius:8px;
 
   }
   @media screen and (max-width: 800px) {
@@ -29,6 +29,7 @@ const SearchItems = styled.ul`
   margin:1em 0;
   padding:0 10px;
   position: absolute;
+  right:10px;
   z-index:10;
   width:367px;
   overflow:hidden;

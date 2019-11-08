@@ -89,6 +89,7 @@ module.exports = {
       },
     },
 
+
     `gatsby-plugin-feed`,
   {
       resolve: `gatsby-plugin-manifest`,

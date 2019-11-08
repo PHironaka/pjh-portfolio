@@ -53,7 +53,7 @@ export default class BlogList extends React.Component {
     const nextPage = (currentPage + 1).toString()
 
     return (
-      <Layout>
+      <>
         <SEO
         title="Blog"
       />
@@ -107,7 +107,7 @@ export default class BlogList extends React.Component {
             </Link>
           )}
         </ul>
-      </Layout>
+      </>
     )
   }
 }
