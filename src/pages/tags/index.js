@@ -2,7 +2,6 @@ import React from 'react'
 import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import Layout from '../../components/Layout'
 import styled from "styled-components"
 
 const TagList = styled.ul`
