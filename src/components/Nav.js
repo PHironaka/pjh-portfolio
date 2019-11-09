@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 import styled from "styled-components"
+import classNames from 'classnames';
 
 const Navigation = styled.nav`
 align-self:center;
@@ -42,9 +43,83 @@ ul {
       }
     }
   }
+`
 
+const MobileMenu = styled.div`
+  @media screen and (min-width: 800px) {
+    display: none;
+  }
+    padding-top: 26px;
+    color: #000;
+    cursor: pointer;
+    display: block;
+    height: 3.25rem;
+    position: absolute;
+    right: 42px;
+    top: 5px;
+    width: 2.25rem;
+    margin-left: auto;
+    transition-delay: 2s;
+    transition: height .35s ease-in-out,opacity .75s ease-in-out;
+    
+    &.active {
+     transition-delay: 2s;
+    transition: height .35s ease-in-out,opacity .75s ease-in-out;
+    
+    .icon-1 {
+      opacity: 0;
+      transform: rotate(40deg);
+    }
+  
+    .icon-2 {
+      top: 26px;
+    -webkit-transform: rotate(-135deg);
+    -moz-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    }
+  
+    .icon-3 {
+      transform: rotate(-42deg);
+  }
+    }
+    span {
+      background-color: currentColor;
+      display: block;
+      height: 1px;
+      left: calc(50% - 8px);
+      position: absolute;
+      -webkit-transform-origin: center;
+      transform-origin: center;
+      transition-duration: .2s;
+      transition-property: background-color,opacity,-webkit-transform;
+      transition-property: background-color,opacity,transform;
+      transition-property: background-color,opacity,transform,-webkit-transform;
+      transition-timing-function: ease-out;
+      width:30px;
+      &.icon-1 {
+      transform: translateY(-8px);
+      animation-delay: 0.2s;
+    }
+      &.icon-3 {
+        transform: translateY(8px);
+        animation-delay: 250ms;
+      }
+   
+  }
 
+`
 
+const NavContent = styled.div`
+ @media screen and (max-width: 800px) {
+      visibility:hidden;
+      opacity:0;
+      &.active {
+    visibility:visible;
+    opacity:1;
+      }
+    }
+  
 `
 
 const activeStyle = {
@@ -56,66 +131,53 @@ const activeStyle = {
 
 
 const nav = class extends React.Component {
-  componentDidMount() {
-    // Get all "navbar-burger" elements
-   const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
-    // Check if there are any navbar burgers
-   if ($navbarBurgers.length > 0) {
- 
-     // Add a click event on each of them
-       $navbarBurgers.forEach( el => {
-       el.addEventListener('click', () => {
- 
-         // Get the target from the "data-target" attribute
-         const target = el.dataset.target;
-         const $target = document.getElementById(target);
- 
-         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-         el.classList.toggle('is-active');
-         $target.classList.toggle('is-active');
- 
-       });
-     });
-   }
- }
+  state = {
+    isActive: false
+  };
 
+  handleClick = () => {
+    this.setState(state => ({ isActive: !state.isActive }));
+  };
 
- render() {
+  render() {
+    const menuClass = classNames({
+      menu: true,
+      active: this.state.isActive
+    });
 
-   return (
-    <Navigation role="navigation" aria-label="navigation"> 
+    return (
+      <Navigation role="navigation" aria-label="navigation">
         <div className="navbar-brand">
-            <div className="navbar-burger burger" data-target="navMenu">
-              <span class="icon-1"></span>
-              <span class="icon-2"></span>
-              <span class="icon-3"></span>
-            </div>
-          </div>
-          <div id="navMenu" className="navbar-menu">
+          <MobileMenu className={menuClass} onClick={this.handleClick} data-target="navMenu">
+            <span class="icon-1"></span>
+            <span class="icon-2"></span>
+            <span class="icon-3"></span>
+          
+          </MobileMenu>
+        </div>
+        <NavContent id="navMenu" className={menuClass}  >
           <div className="navbar-start has-text-centered">
-
-          <ul>
-            <li> <Link to="/" itemprop="url">
-              Projects
+            <ul>
+              <li> <Link onClick={this.handleClick}  to="/" itemprop="url">
+                Projects
         </Link></li>
-            <li> <Link to="/blog" itemprop="url">
-              Notes
+              <li> <Link onClick={this.handleClick} to="/blog" itemprop="url">
+                Notes
         </Link></li>
-            <li> <Link to="/about" itemprop="url">
-              About
+              <li> <Link onClick={this.handleClick} to="/about" itemprop="url">
+                About
         </Link></li>
-          </ul>
-
-          
+            </ul>
 
           </div>
-          
-          </div>
 
-       
-    </Navigation>
-      
-  )}
+        </NavContent>
+
+
+      </Navigation>
+
+    )
+  }
 }
 
 export default nav
