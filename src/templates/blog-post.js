@@ -93,7 +93,7 @@ class BlogPostTemplate extends React.Component {
 
         <PaginationSection
         >
-            { previous.frontmatter.templateKey === 'blog-post' &&  (
+            { previous &&  (
 
           <li>
               <Link to={previous.fields.slug} rel="prev">
@@ -102,7 +102,7 @@ class BlogPostTemplate extends React.Component {
           </li>
             )}
 
-{ next.frontmatter.templateKey === 'blog-post' &&  (
+{ next &&  (
 
           <li>
               <Link to={next.fields.slug} rel="next">
