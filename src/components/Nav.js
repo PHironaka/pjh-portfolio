@@ -117,6 +117,20 @@ const NavContent = styled.div`
       &.active {
     visibility:visible;
     opacity:1;
+    height: 100%;
+    position: absolute;
+    background: white;
+    width: 100%;
+    top: 67px;
+    z-index: 10000;
+
+    ul {
+      display:block;
+      li {
+        margin:2em 0;
+        font-size:1.5em;
+      }
+    }
       }
     }
   
@@ -147,7 +161,7 @@ const nav = class extends React.Component {
 
     return (
       <Navigation role="navigation" aria-label="navigation">
-        <div className="navbar-brand">
+        <div >
           <MobileMenu className={menuClass} onClick={this.handleClick} data-target="navMenu">
             <span class="icon-1"></span>
             <span class="icon-2"></span>
@@ -155,8 +169,8 @@ const nav = class extends React.Component {
           
           </MobileMenu>
         </div>
-        <NavContent id="navMenu" className={menuClass}  >
-          <div className="navbar-start has-text-centered">
+        <NavContent  className={menuClass}  >
+          <div >
             <ul>
               <li> <Link onClick={this.handleClick}  to="/" itemprop="url">
                 Projects
