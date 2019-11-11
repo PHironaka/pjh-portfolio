@@ -14,6 +14,7 @@ const theme = {
   black: '#000',
   grey: '#3A3A3A',
   lightgrey: '#E1E1E1',
+  pink: '#f5d6db',
   offWhite: '#EDEDED',
   maxWidth: '1200px',
 };

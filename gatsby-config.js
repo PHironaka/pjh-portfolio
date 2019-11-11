@@ -22,7 +22,7 @@ module.exports = {
       },
     },
 
-    
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -34,7 +34,7 @@ module.exports = {
               maxWidth: 590,
             },
           },
-        
+
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
@@ -85,13 +85,22 @@ module.exports = {
             path: node => node.fields.slug,
           },
         },
-       
+
       },
     },
 
+    {
+      resolve: 'gatsby-plugin-page-progress',
+      options: {
+        includePaths: [{ regex: '^/blog' }],
+        height: 5,
+        prependToBody: false,
+        color: `#f5d6db`,
+      }
+    },
 
     `gatsby-plugin-feed`,
-  {
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: "Peter Hironaka",
@@ -118,7 +127,7 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-offline`,    
+    `gatsby-plugin-offline`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
   ],
