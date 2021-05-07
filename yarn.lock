@@ -5278,6 +5278,11 @@ gatsby-plugin-page-creator@^2.1.1:
     lodash "^4.17.10"
     micromatch "^3.1.10"
 
+gatsby-plugin-page-progress@^2.0.14:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-page-progress/-/gatsby-plugin-page-progress-2.2.0.tgz#63b093e03901860659f2aedcb351cbd7a462b6d1"
+  integrity sha512-8HnJxRUJWzmhorPhv87lw8/aWW2OIodhmG/fnpujfTBzr1aRZwRQx4DI9wsYWBzqUamtl7hQ7JiUf6QPUHmsiw==
+
 gatsby-plugin-react-helmet@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-react-helmet/-/gatsby-plugin-react-helmet-3.1.0.tgz#5cc5271334fce7522207f751a24af97bd7eebaf5"
@@ -11997,9 +12002,9 @@ underscore.string@^3.3.5:
     util-deprecate "^1.0.2"
 
 underscore@^1.7.0:
-  version "1.9.1"
-  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.9.1.tgz#06dce34a0e68a7babc29b365b8e74b8925203961"
-  integrity sha512-5/4etnCkd9c8gwgowi5/om/mYO5ajCaOgdzj/oW+0eQV9WxKBDZw5+ycmKmeaTXjInS/W0BzpGLo2xR2aBwZdg==
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.13.1.tgz#0c1c6bd2df54b6b69f2314066d65b6cde6fcf9d1"
+  integrity sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==
 
 unherit@^1.0.4:
   version "1.1.2"
